@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "120775555765-dj5599vgijc11qskj2tiegni0ubqi955.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tokyo.aoisupersix.pushnotifyapp",
+            "certificate_hash": "e98b0826588f6f1a383ca13e5f271fce6e204014"
+          }
+        },
+        {
           "client_id": "120775555765-720h56262ol874ce5refveu29413n7m1.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120775555765-720h56262ol874ce5refveu29413n7m1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
