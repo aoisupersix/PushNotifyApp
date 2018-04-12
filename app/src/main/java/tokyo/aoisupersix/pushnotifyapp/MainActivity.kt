@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Push通知の購読開始
-        FirebaseMessaging.getInstance().subscribeToTopic("mytopic")
+        FirebaseMessaging.getInstance().subscribeToTopic("topic")
     }
 }

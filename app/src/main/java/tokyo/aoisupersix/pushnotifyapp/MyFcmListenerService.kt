@@ -1,5 +1,6 @@
 package tokyo.aoisupersix.pushnotifyapp
 
+import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
@@ -38,7 +39,8 @@ class MyFcmListenerService: FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
-                .setAutoCancel(true)
+                .setContentText(body)
+                .setPriority(Notification.PRIORITY_HIGH)
                 .setSound(defaultSoundUri)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(body))
                 .setContentIntent(pendingIntent)
