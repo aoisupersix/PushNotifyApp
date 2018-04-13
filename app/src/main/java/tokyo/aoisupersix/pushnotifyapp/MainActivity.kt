@@ -25,15 +25,7 @@ class MainActivity : AppCompatActivity() {
         val locationListView = findViewById<ListView>(R.id.locationListView)
 
         //LocationMessageの取得/セット
-        val listViewItems: MutableList<LocationListViewItem> = mutableListOf()
-        for (remoteMes in LocationInfoManager.remoteMessages) {
-            listViewItems.add(LocationListViewItem(
-                    remoteMes.notification?.title as String,
-                    remoteMes.notification?.body as String,
-                    remoteMes.data["time"] as String))
-        }
-
-        locationListViewAdapter = LocationListViewAdapter(this,listViewItems)
+        locationListViewAdapter = LocationListViewAdapter(this,LocationInfoManager.locationListViewItems)
 
         locationListView.emptyView = findViewById(R.id.emptyLocationView)
         locationListView.adapter = locationListViewAdapter
