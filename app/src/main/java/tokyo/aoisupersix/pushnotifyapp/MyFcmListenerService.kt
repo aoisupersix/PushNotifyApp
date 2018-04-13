@@ -19,16 +19,18 @@ class MyFcmListenerService: FirebaseMessagingService() {
     override fun onMessageReceived(p0: RemoteMessage?) {
         val title: String? = p0?.notification?.title ?: return
         val body: String? = p0?.notification?.body ?: return
+        val time: String? = p0?.data["time"] ?:return
 
         LocationInfoManager.remoteMessages.add(p0)
 
         Log.d(tag, "Message-Title: $title")
         Log.d(tag, "data: $body")
+        Log.d(tag, "time: $time")
 
-        sendNotification(title, body)
+        sendNotification(title, body, time)
     }
 
-    private fun sendNotification(title: String?, body: String?) {
+    private fun sendNotification(title: String?, body: String?, time: String?) {
         val intentArray: Array<Intent?> = arrayOfNulls(1)
         intentArray[0] = Intent(this, MainActivity::class.java)
         intentArray[0]?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

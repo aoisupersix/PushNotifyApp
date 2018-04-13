@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import kotlinx.android.synthetic.main.location_list_view_item.view.*
 
 class LocationListViewAdapter(var context: Context, var items: MutableList<LocationListViewItem>): BaseAdapter(){
     val inflater: LayoutInflater
@@ -22,12 +23,15 @@ class LocationListViewAdapter(var context: Context, var items: MutableList<Locat
             holder = it.tag as LocationListViewHolder?
         } ?: run {
             v = inflater.inflate(R.layout.location_list_view_item, null)
-            holder = LocationListViewHolder(v?.findViewById(R.id.text) as TextView)
+            holder = LocationListViewHolder(v?.findViewById(R.id.userName) as TextView, v?.findViewById(R.id.location) as TextView, v?.findViewById(R.id.time) as TextView)
             v?.tag = holder
         }
 
         holder?.let {
-            it.textView.text = items.get(position).text
+            //it.textView.userName = items.get(position).userName
+            it.userNameTextView.text = items.get(position).userName
+            it.locationTextView.text = items.get(position).location
+            it.timeTextView.text = items.get(position).time
         }
 
         return v as View
@@ -45,5 +49,5 @@ class LocationListViewAdapter(var context: Context, var items: MutableList<Locat
         return items.size
     }
 
-    class LocationListViewHolder(var textView: TextView)
+    class LocationListViewHolder(var userNameTextView: TextView, var locationTextView: TextView, var timeTextView: TextView)
 }

@@ -8,23 +8,34 @@ import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
+    var locationListViewAdapter: LocationListViewAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Push通知の購読開始
         FirebaseMessaging.getInstance().subscribeToTopic("topic")
+    }
 
-        //ListViewのテスト
+    override fun onResume() {
+        super.onResume()
+
+        //ListViewにLocation情報をセット
         val locationListView = findViewById<ListView>(R.id.locationListView)
+
+        //LocationMessageの取得/セット
         val listViewItems: MutableList<LocationListViewItem> = mutableListOf()
-        for (i in 0..10) {
-            listViewItems.add(LocationListViewItem("item-$i"))
+        for (remoteMes in LocationInfoManager.remoteMessages) {
+            listViewItems.add(LocationListViewItem(
+                    remoteMes.notification?.title as String,
+                    remoteMes.notification?.body as String,
+                    remoteMes.data["time"] as String))
         }
 
-        val adapter = LocationListViewAdapter(this, listViewItems)
+        locationListViewAdapter = LocationListViewAdapter(this,listViewItems)
 
         locationListView.emptyView = findViewById(R.id.emptyLocationView)
-        locationListView.adapter = adapter
+        locationListView.adapter = locationListViewAdapter
     }
 }

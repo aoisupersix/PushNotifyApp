@@ -1,3 +1,3 @@
 package tokyo.aoisupersix.pushnotifyapp
 
-class LocationListViewItem(var text: String)
+class LocationListViewItem(var userName: String, var location: String, var time: String)
