@@ -9,19 +9,18 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.support.v4.app.NotificationCompat
 import android.util.Log
-import com.google.firebase.iid.FirebaseInstanceId
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-
-import kotlin.collections.Map
 
 class MyFcmListenerService: FirebaseMessagingService() {
     private val tag: String = MyInstanceIDListenerService::class.simpleName!!
 
     override fun onMessageReceived(p0: RemoteMessage?) {
-        val title: String? = p0?.notification?.title
-        val body: String? = p0?.notification?.body
+        val title: String? = p0?.notification?.title ?: return
+        val body: String? = p0?.notification?.body ?: return
+
+        LocationInfoManager.remoteMessages.add(p0)
 
         Log.d(tag, "Message-Title: $title")
         Log.d(tag, "data: $body")
