@@ -32,10 +32,7 @@ class MyFcmListenerService: FirebaseMessagingService() {
         val time: String? = p0?.data["time"] ?:return
 
         //通知情報を格納
-        LocationInfoManager.locationListViewItems.add(LocationListViewItem(
-                title as String,
-                body as String,
-                time as String))
+        LocationInfoManager.addMessages(title as String, body as String, time as String)
 
         Log.d(tag, "Message-Title: $title")
         Log.d(tag, "data: $body")

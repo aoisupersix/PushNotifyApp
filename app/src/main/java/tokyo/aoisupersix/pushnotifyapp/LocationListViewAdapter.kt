@@ -8,12 +8,17 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.location_list_view_item.view.*
 
-class LocationListViewAdapter(var context: Context, var items: MutableList<LocationListViewItem>): BaseAdapter(){
-    val inflater: LayoutInflater
-
-    init {
-        inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    }
+/**
+ * LocationListViewに値を代入するアダプタクラスです。
+ * @param context アプリケーションのコンテキスト
+ * @param items ListViewで表示するLocationListViewItemクラスのリスト
+ * @param inflater LayoutInflater
+ */
+class LocationListViewAdapter(
+        var context: Context,
+        var items: MutableList<LocationListViewItem>,
+        private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+): BaseAdapter(){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var v = convertView
