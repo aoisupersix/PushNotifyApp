@@ -11,7 +11,7 @@ import com.google.firebase.messaging.FirebaseMessaging
  */
 class MainActivity : AppCompatActivity() {
 
-    var locationListViewAdapter: LocationListViewAdapter? = null
+    private var locationListViewAdapter: LocationListViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        LocationInfoManager.addMessages("userName", "location", "time")
 
         //ListViewにLocation情報をセット
         val locationListView = findViewById<ListView>(R.id.locationListView)
