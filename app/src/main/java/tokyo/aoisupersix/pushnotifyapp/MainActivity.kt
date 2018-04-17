@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
                 updateListView()
                 return true
             }
+            R.id.refresh -> {
+                updateListView()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
