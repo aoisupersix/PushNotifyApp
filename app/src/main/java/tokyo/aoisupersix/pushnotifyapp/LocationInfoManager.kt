@@ -39,4 +39,14 @@ object LocationInfoManager {
         realm.commitTransaction()
     }
 
+    /**
+     * 保持している全てのメッセージを削除します
+     */
+    fun deleteAllMessages() {
+        val realm = Realm.getDefaultInstance()
+        realm.beginTransaction()
+        var model = realm.where(PushMessageInfo::class.java).findAll()
+        model.deleteAllFromRealm()
+    }
+
 }
