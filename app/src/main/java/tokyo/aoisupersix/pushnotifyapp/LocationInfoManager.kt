@@ -31,12 +31,12 @@ object LocationInfoManager {
      */
     fun addMessages(userName: String, location: String, time: String) {
         val realm = Realm.getDefaultInstance()
-        realm.beginTransaction()
-        val model = realm.createObject(PushMessageInfo::class.java, UUID.randomUUID().toString())
-        model.userName = userName
-        model.location = location
-        model.time = time
-        realm.commitTransaction()
+        realm.executeTransaction {
+            val model = realm.createObject(PushMessageInfo::class.java, UUID.randomUUID().toString())
+            model.userName = userName
+            model.location = location
+            model.time = time
+        }
     }
 
     /**
@@ -44,9 +44,10 @@ object LocationInfoManager {
      */
     fun deleteAllMessages() {
         val realm = Realm.getDefaultInstance()
-        realm.beginTransaction()
-        var model = realm.where(PushMessageInfo::class.java).findAll()
-        model.deleteAllFromRealm()
+        realm.executeTransaction {
+            var model = realm.where(PushMessageInfo::class.java).findAll()
+            model.deleteAllFromRealm()
+        }
     }
 
 }
