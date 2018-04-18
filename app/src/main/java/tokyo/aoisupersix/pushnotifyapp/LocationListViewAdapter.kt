@@ -33,7 +33,6 @@ class LocationListViewAdapter(
         }
 
         holder?.let {
-            //it.textView.userName = items.get(position).userName
             it.userNameTextView.text = items.get(position).userName
             it.locationTextView.text = items.get(position).location
             it.timeTextView.text = items.get(position).time

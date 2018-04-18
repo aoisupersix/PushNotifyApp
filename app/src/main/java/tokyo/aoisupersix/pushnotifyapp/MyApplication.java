@@ -25,15 +25,6 @@ public class MyApplication extends Application {
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(config);
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            // Create channel to show notifications.
-//            String channelId  = getString(R.string);
-//            String channelName = getString(R.string.default_notification_channel_name);
-//            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-//            notificationManager.createNotificationChannel(new NotificationChannel(channelId,
-//                    channelName, NotificationManager.IMPORTANCE_LOW));
-//        }
     }
 
     /**

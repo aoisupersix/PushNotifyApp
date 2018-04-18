@@ -35,18 +35,18 @@ class MyFcmListenerService: FirebaseMessagingService() {
      * @param p0 取得した通知内容
      */
     override fun onMessageReceived(p0: RemoteMessage?) {
-        val title: String = p0!!.data["notifyTitle"] ?: return
-        val body: String = p0.data["location"] ?: return
+        val userName: String = p0!!.data["userName"] ?: return
+        val location: String = p0.data["location"] ?: return
         val time: String = p0.data["time"] ?: return
 
         //通知情報を格納
-        LocationInfoManager.addMessages(title, body, time)
+        LocationInfoManager.addMessages(userName, location, time)
 
-        Log.d(tag, "Message-Title: $title")
-        Log.d(tag, "data: $body")
+        Log.d(tag, "Message-Title: $userName")
+        Log.d(tag, "data: $location")
         Log.d(tag, "time: $time")
 
-        sendNotification(title, body, time)
+        sendNotification("Now Location: $userName", location, time)
     }
 
     /**
